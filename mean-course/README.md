@@ -1,27 +1,107 @@
-# MeanCourse
+# Step for Angular 17 CRUD with Node JS and MongoDB
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.7.
+- Step 1: Create Angular 17 Project
+- Step 2: Install Bootstrap
+- Step 3: Create Post Module
+- Step 4: Create Component For Module
+- Step 5: Create Routes
+- Step 6: Create Interface
+- Step 7: Create Service
+- Step 8: Update Component Logic and Template
+- Step 9: export provideHttpClient()
+- Step 10: Create REST API using Node JS and MongoDB
+- Run Node JS App
+- Run Angular App
 
-## Development server
+Now, let's follow the below step to create crud operations with angular 17.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Step 1: Create Angular 17 Project
 
-## Code scaffolding
+You can easily create your angular app using below command:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
+ng new my-new-app
+```
 
-## Build
+## Step 2: Install Bootstrap
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+now, we will install bootstrap for our crud application, so let's run bellow command and import it to css file.
 
-## Running unit tests
+```
+npm install bootstrap --save
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Now after successfully run above command. let's import it in angular.json file.
 
-## Running end-to-end tests
+> angular.json
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```json
+ "styles": [
+        "node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "src/styles.css"
+      ],
+```
 
-## Further help
+## Step 3: Create Post Module
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+After creating successfully app, we need to create post module using angular cli command. angular provide command to create module with routing in angular application. so let's run bellow command to create post module:
+
+```
+ng generate module post
+```
+
+run successfully command, it will create files as like bellow path:
+
+> src/app/post/post.module.ts
+
+## Step 4: Create Component For Module
+
+Now we will add new component to our post module using bellow command, so let's create index, view, create and edit component for admin module:
+
+```
+ng generate component post/index
+ng generate component post/view
+ng generate component post/create
+ng generate component post/edit
+```
+
+## Step 5: Create Routes
+
+In this step, we will simply create route for index, create, edit and view using generated new component. so we have to update our app.routes.ts module file as like bellow code:
+
+> src/app/app.routes.ts
+
+```ts
+import { Routes } from "@angular/router";
+
+import { IndexComponent } from "./post/index/index.component";
+import { ViewComponent } from "./post/view/view.component";
+import { CreateComponent } from "./post/create/create.component";
+import { EditComponent } from "./post/edit/edit.component";
+
+export const routes: Routes = [
+  { path: "post", redirectTo: "post/index", pathMatch: "full" },
+  { path: "post/index", component: IndexComponent },
+  { path: "post/:postId/view", component: ViewComponent },
+  { path: "post/create", component: CreateComponent },
+  { path: "post/:postId/edit", component: EditComponent },
+];
+```
+
+## Step 6: Create Interface
+
+In this step, we will create interface using angular command for post module. we will use post interface with Observable. so let's create interface with bellow code.
+
+```
+ng generate interface post/post
+```
+
+> src/app/post/post.ts
+
+```ts
+export interface Post {
+  _id: number;
+  title: string;
+  body: string;
+}
+```
