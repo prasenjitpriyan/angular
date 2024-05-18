@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "01-my-angular": {
+    "mean-course": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/01-my-angular",
+            "outputPath": "dist/mean-course",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -62,10 +62,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "01-my-angular:build:production"
+              "buildTarget": "mean-course:build:production"
             },
             "development": {
-              "buildTarget": "01-my-angular:build:development"
+              "buildTarget": "mean-course:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -73,7 +73,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "01-my-angular:build"
+            "buildTarget": "mean-course:build"
           }
         },
         "test": {
@@ -96,8 +96,5 @@
         }
       }
     }
-  },
-  "cli": {
-    "analytics": "2760e454-144a-457b-a3a7-b7c7ccd4205f"
   }
 }
